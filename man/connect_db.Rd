@@ -26,7 +26,7 @@ example: \code{"~/.my.cnf"}}
 \description{
 Used to connect to the databases using a configuration file - for unix and windows
 The credentials are stored in an external file in the home directory \code{~}.
-On Unix: Edit the credentials with \code{file.edit("~/dbconfig.yml")}.
+On Unix: Edit the credentials with \code{file.edit("~/config.yml")}.
 On Windows: Edit the credentials with \code{file.edit("~/.my.cnf")}.
 }
 \details{

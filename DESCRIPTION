@@ -18,5 +18,5 @@ Imports:
     magrittr,
     openxlsx,
     purrr,
-    RMySQL,
+    RMariaDB,
     rvest

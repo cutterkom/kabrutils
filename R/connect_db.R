@@ -2,7 +2,7 @@
 #'
 #' Used to connect to the databases using a configuration file - for unix and windows
 #' The credentials are stored in an external file in the home directory `~`.
-#' On Unix: Edit the credentials with `file.edit("~/dbconfig.yml")`.
+#' On Unix: Edit the credentials with `file.edit("~/config.yml")`.
 #' On Windows: Edit the credentials with `file.edit("~/.my.cnf")`.
 #'
 #' **What inside .yml file?**
@@ -39,7 +39,7 @@ connect_db <- function(credential_name = "db_local",
   if (.Platform$OS.type == "unix") { #if unix
     if (package == "DBI") {
       DBI::dbConnect(
-        RMySQL::MySQL(),
+        RMariaDB::MariaDB(),
         host = config$host,
         user = config$user,
         password = config$password,
@@ -57,7 +57,7 @@ connect_db <- function(credential_name = "db_local",
       )
     }
   } else { # if windows
-    DBI::dbConnect(RMySQL::MySQL(),
+    DBI::dbConnect(RMariaDB::MariaDB(),
                    dbname = credential_name,
                    default.file = default.file.windows)
   }
