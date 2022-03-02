@@ -6,7 +6,7 @@
 
 The goal of kabrutils is to provide a bunch of utilty functions.
 
-## Installation
+## Installation/Update
 
 You can install the development version of kabrutils from [GitHub](https://github.com/) with:
 
@@ -16,6 +16,3 @@ credentials::set_github_pat()
 # install.packages("devtools")
 devtools::install_github("cutterkom/kabrutils")
 ```
-
-## Update
-
