@@ -1,5 +1,13 @@
 utils::globalVariables(
   c(
-    "infile"
+    "infile",
+    "id_1",
+    "id_2",
+    "id_1_id_2",
+    ".",
+    "value",
+    ":=",
+    ".data",
+    "middlename"
     )
 )

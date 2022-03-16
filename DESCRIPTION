@@ -18,5 +18,10 @@ Imports:
     magrittr,
     openxlsx,
     purrr,
+    quanteda.textstats,
     RMariaDB,
-    rvest
+    rvest,
+    stringi,
+    stringr,
+    tibble,
+    tidyr
