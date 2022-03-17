@@ -27,7 +27,7 @@ write_xlsx <- function(data, filename, sheet) {
   # add filter
   addFilter(wb, sheet = sheet, rows = 1, cols = 1:ncol(data))
   # delete existing file
-  unlink(infile)
+  unlink(filename)
   saveWorkbook(wb = wb, file = filename)
 
 }
