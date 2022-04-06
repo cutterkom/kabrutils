@@ -19,3 +19,68 @@ extract_text <- function(node, class) {
     html_text())
   return(text)
 }
+
+#' Call lobid API
+#'
+#' see: http://lobid.org/resources/api
+#'
+#' @param query string
+#' @param parameter string, e.g. isbn
+#' @param verbose if TRUE, then url printed to console
+#' @param as_list default: ``FALSE``. If `TRUE` then json is converted to a R list, otherwise just url
+#' @return list
+#' @export
+#' @examples
+#' \dontrun{
+#' call_lobid_api(3894090685, query = ., parameter = "isbn")
+#' }
+
+call_lobid_api <- function(query, parameter = NULL, verbose = TRUE, as_list = FALSE) {
+
+  # build URL according to lobid documentation
+  if (is.null(parameter)) {
+    url <- paste0("https://lobid.org/resources/search?q=", query, "&format=json")
+    url <- URLencode(url)
+  } else if (!is.null(parameter)) {
+    url <- paste0("https://lobid.org/resources/search?q=", parameter, ":", query, "&format=json")
+  }
+
+  if (verbose == TRUE) {
+    message(paste0("URL: ", url))
+  }
+
+  if (as_list == TRUE) {
+    json <- jsonlite::fromJSON(url)
+    json
+  } else {
+    url
+  }
+
+}
+
+
+#' Get value of a special field
+#'
+#' This function fetches the value of fields in a nested json, no matter on which level.
+#' Based on the very popular js, JSON command line processor https://stedolan.github.io/jq/
+#' @importFrom curl curl
+#' @importFrom jqr jq
+#' @param input the json url
+#' @param input_type `url` when string, `response` when fetched response (e.g. when using the same response for multiple queries)
+#' @param jq_syntax jq filter (test here https://jqplay.org/)
+#' @export
+#' @examples
+#' \dontrun{
+#' "https://lobid.org/resources/search?q=isbn:3596237785&format=json" %>%
+#' get_field_values("gndIdentifier")
+#' }
+get_field_values <- function(input, input_type = "url", jq_syntax) {
+  if(input_type == "url") {
+    curl::curl(input) %>% jqr::jq(jq_syntax)
+  } else if(input_type == "response") {
+    input %>% jqr::jq(jq_syntax)
+  } else {
+    stop("not implemented")
+  }
+
+}

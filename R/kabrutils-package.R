@@ -3,6 +3,7 @@
 
 ## usethis namespace: start
 #' @importFrom config get
+#' @importFrom curl curl
 #' @importFrom DBI dbConnect
 #' @importFrom dbx dbxConnect
 #' @importFrom dplyr arrange
@@ -11,6 +12,8 @@
 #' @importFrom dplyr mutate
 #' @importFrom dplyr mutate_if
 #' @importFrom fs file_show
+#' @importFrom jqr jq
+#' @importFrom jsonlite fromJSON
 #' @importFrom openxlsx addFilter
 #' @importFrom openxlsx addWorksheet
 #' @importFrom openxlsx createWorkbook
@@ -31,5 +34,6 @@
 #' @importFrom stringr word
 #' @importFrom tibble rownames_to_column
 #' @importFrom tidyr pivot_longer
+#' @importFrom utils URLencode
 ## usethis namespace: end
 NULL

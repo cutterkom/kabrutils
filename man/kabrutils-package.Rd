@@ -4,12 +4,12 @@
 \name{kabrutils-package}
 \alias{kabrutils}
 \alias{kabrutils-package}
-\title{kabrutils: What the Package Does (One Line, Title Case)}
+\title{kabrutils: Utility functions for my projects}
 \description{
 What the package does (one paragraph).
 }
 \author{
-\strong{Maintainer}: First Last \email{first.last@example.com} (\href{https://orcid.org/YOUR-ORCID-ID}{ORCID})
+\strong{Maintainer}: Katharina Brunner \email{first.last@example.com}
 
 }
 \keyword{internal}
