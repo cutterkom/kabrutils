@@ -45,10 +45,10 @@ call_lobid_api <- function(query, parameter = NULL, verbose = TRUE, as_list = FA
 
   # build URL according to lobid documentation
   if (is.null(parameter)) {
-    url <- paste0("https://lobid.org", lobid_api_type, "search?q=", query, "&format=json")
+    url <- paste0("https://lobid.org/", lobid_api_type, "/search?q=", query, "&format=json")
     url <- URLencode(url)
   } else if (!is.null(parameter)) {
-    url <- paste0("https://lobid.org", lobid_api_type, "search?q=", parameter, ":", query, "&format=json")
+    url <- paste0("https://lobid.org/", lobid_api_type, "/search?q=", parameter, ":", query, "&format=json")
   }
 
   if (verbose == TRUE) {
