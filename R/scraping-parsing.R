@@ -102,7 +102,7 @@ get_field_values <- function(input, input_type = "url", jq_syntax) {
 #' \dontrun{
 #' res <- httr::GET("https://lobid.org/gnd/search?q=preferredName:Max%20Spohr&format=json")
 #' res <- httr::content(res, as = "text")
-#' df_from_json <- transform_json_to_tidy(res, unnest_type = "wide")
+#' df_from_json <- transform_json_to_dataframe(res, unnest_type = "wide")
 #' }
 
 transform_json_to_dataframe <- function(json, unnest_type = "long", keep_name = TRUE) {
