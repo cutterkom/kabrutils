@@ -8,6 +8,7 @@ utils::globalVariables(
     "value",
     ":=",
     ".data",
-    "middlename"
+    "middlename",
+    "name" # from tibble::enframe() in transform_json_to_dataframe()
     )
 )

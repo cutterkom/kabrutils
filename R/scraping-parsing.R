@@ -90,3 +90,39 @@ get_field_values <- function(input, input_type = "url", jq_syntax) {
   }
 
 }
+
+#' Transform json to a tidy dataframe
+#' Uses `jsonlite::fromJSON` together with some `map`, `enframe` and `unnest_wider` to create a tidy tibble/dataframe.
+#' @param json json string
+#' @param unnest_type should the dataframe be wide or long?
+#' @param keep_name default: `TRUE`; `tibble::enframe()` names resulting cols, decide if `name` column is needed
+#' @return dataframe/tibble
+#' @export
+#' @examples
+#' \dontrun{
+#' res <- httr::GET("https://lobid.org/gnd/search?q=preferredName:Max%20Spohr&format=json")
+#' res <- httr::content(res, as = "text")
+#' df_from_json <- transform_json_to_tidy(res, unnest_type = "wide")
+#' }
+
+transform_json_to_dataframe <- function(json, unnest_type = "long", keep_name = TRUE) {
+
+  if (unnest_type == "long") {
+    dataframe <- json %>%
+      purrr::map(jsonlite::fromJSON) %>%
+      tibble::enframe() %>%
+      tidyr::unnest_longer(value)
+  } else if (unnest_type == "wide") {
+    dataframe <- json %>%
+      purrr::map(jsonlite::fromJSON) %>%
+      tibble::enframe() %>%
+      tidyr::unnest_wider(value)
+  } else {
+    stop("not implemented")
+  }
+
+  if(keep_name == FALSE) {
+    dataframe <- dataframe %>% dplyr::select(-name)
+  }
+  dataframe
+}
