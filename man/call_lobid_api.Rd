@@ -4,7 +4,13 @@
 \alias{call_lobid_api}
 \title{Call lobid API}
 \usage{
-call_lobid_api(query, parameter = NULL, verbose = TRUE, as_list = FALSE)
+call_lobid_api(
+  query,
+  parameter = NULL,
+  verbose = TRUE,
+  as_list = FALSE,
+  lobid_api_type = "resources"
+)
 }
 \arguments{
 \item{query}{string}
@@ -14,12 +20,19 @@ call_lobid_api(query, parameter = NULL, verbose = TRUE, as_list = FALSE)
 \item{verbose}{if TRUE, then url printed to console}
 
 \item{as_list}{default: \code{FALSE}. If \code{TRUE} then json is converted to a R list, otherwise just url}
+
+\item{lobid_api_type}{lobid offers 3 types of APIs: \code{resources}, \code{organisations} and \code{gnd}; defaults to \code{resources}}
 }
 \value{
 list
 }
 \description{
-see: http://lobid.org/resources/api
+lobid offers three types of APIs: \code{resources}, \code{organisations} and \code{gnd}. See their respective docs at:
+\itemize{
+\item https://lobid.org/resources
+\item https://lobid.org/organisations
+\item https://lobid.org/gnd
+}
 }
 \examples{
 \dontrun{

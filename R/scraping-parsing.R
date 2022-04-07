@@ -21,13 +21,19 @@ extract_text <- function(node, class) {
 }
 
 #' Call lobid API
+#' @description
+#' lobid offers three types of APIs: `resources`, `organisations` and `gnd`. See their respective docs at:
 #'
-#' see: http://lobid.org/resources/api
+#' * https://lobid.org/resources
+#' * https://lobid.org/organisations
+#' * https://lobid.org/gnd
+#'
 #'
 #' @param query string
 #' @param parameter string, e.g. isbn
 #' @param verbose if TRUE, then url printed to console
 #' @param as_list default: ``FALSE``. If `TRUE` then json is converted to a R list, otherwise just url
+#' @param lobid_api_type lobid offers 3 types of APIs: `resources`, `organisations` and `gnd`; defaults to `resources`
 #' @return list
 #' @export
 #' @examples
@@ -35,14 +41,14 @@ extract_text <- function(node, class) {
 #' call_lobid_api(3894090685, query = ., parameter = "isbn")
 #' }
 
-call_lobid_api <- function(query, parameter = NULL, verbose = TRUE, as_list = FALSE) {
+call_lobid_api <- function(query, parameter = NULL, verbose = TRUE, as_list = FALSE, lobid_api_type = "resources") {
 
   # build URL according to lobid documentation
   if (is.null(parameter)) {
-    url <- paste0("https://lobid.org/resources/search?q=", query, "&format=json")
+    url <- paste0("https://lobid.org", lobid_api_type, "search?q=", query, "&format=json")
     url <- URLencode(url)
   } else if (!is.null(parameter)) {
-    url <- paste0("https://lobid.org/resources/search?q=", parameter, ":", query, "&format=json")
+    url <- paste0("https://lobid.org", lobid_api_type, "search?q=", parameter, ":", query, "&format=json")
   }
 
   if (verbose == TRUE) {
