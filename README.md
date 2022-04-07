@@ -4,7 +4,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of kabrutils is to provide a bunch of utilty functions.
+`kabrutils` is a package to store a bunch of functions I use regularly.
 
 ## Installation/Update
 
