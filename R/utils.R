@@ -5,6 +5,7 @@
 #'
 #' @param ... string or numeric vectors, typically id columns
 #' @seealso Copied from \url{https://stackoverflow.com/a/62381665/2646974}
+#' @export
 #' @examples
 #'\dontrun{
 #' df <- data.frame(id_1 = c(1,2), id_2 = c(2,1))
