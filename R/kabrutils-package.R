@@ -30,10 +30,13 @@
 #' @importFrom rvest html_text
 #' @importFrom stringi stri_trans_general
 #' @importFrom stringr str_c
+#' @importFrom stringr str_remove_all
+#' @importFrom stringr str_split
 #' @importFrom stringr str_sub
 #' @importFrom stringr word
 #' @importFrom tibble rownames_to_column
 #' @importFrom tidyr pivot_longer
+#' @importFrom tokenizers tokenize_character_shingles
 #' @importFrom utils URLencode
 ## usethis namespace: end
 NULL

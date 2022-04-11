@@ -34,6 +34,7 @@ Mainly works only for Kartoffel names.
 \examples{
 df <- data.frame(name = c("Rita Mae Brown", "vorname df dsafasf", "sdf asdfd"))
 split_human_name(df)
+
 }
 \seealso{
 \url{https://shinesolutions.com/2018/01/08/falsehoods-programmers-believe-about-names-with-examples/}
