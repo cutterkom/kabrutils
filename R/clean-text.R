@@ -14,10 +14,11 @@
 clean_string <- function(data, col) {
   data %>%
     dplyr::mutate(
-      # remove all punctuations and digits
-      !!col := stringr::str_replace_all(.data[[col]], "[:punct:]|[:digit:]", " "),
       # transform to ascii, keeping german Umlauts
       !!col := stringi::stri_trans_general(.data[[col]], "de-ASCII; Latin-ASCII"),
+      # remove all punctuations and digits
+      !!col := stringr::str_remove_all(.data[[col]], "[:punct:]|[:digit:]"),
+      !!col := stringr::str_replace_all(.data[[col]], "\\s\\s", " "),
       # remove whitespace and transform to lowercase
       !!col := trimws(tolower(.data[[col]]))
     )
