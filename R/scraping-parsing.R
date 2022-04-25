@@ -33,7 +33,7 @@ extract_text <- function(node, class) {
 #' @param parameter string, e.g. isbn
 #' @param verbose if TRUE, then url printed to console
 #' @param as_list default: ``FALSE``. If `TRUE` then json is converted to a R list, otherwise just url
-#' @param lobid_api_type lobid offers 3 types of APIs: `resources`, `organisations` and `gnd`; defaults to `resources`
+#' @param lobid_api_type lobid offers 3 types of APIs: `resources`, `organisations` and `gnd` as well as a direct search for an entity via GND_ID `gnd_id_search`; defaults to `resources`
 #' @return list
 #' @export
 #' @examples
@@ -43,12 +43,18 @@ extract_text <- function(node, class) {
 
 call_lobid_api <- function(query, parameter = NULL, verbose = TRUE, as_list = FALSE, lobid_api_type = "resources") {
 
-  # build URL according to lobid documentation
-  if (is.null(parameter)) {
-    url <- paste0("https://lobid.org/", lobid_api_type, "/search?q=", query, "&format=json")
-    url <- URLencode(url)
-  } else if (!is.null(parameter)) {
-    url <- paste0("https://lobid.org/", lobid_api_type, "/search?q=", parameter, ":", query, "&format=json")
+  if (lobid_api_type == "gnd_id_search") {
+    # calling GND entity json directly via GND_ID
+    # https://lobid.org/gnd/api
+    url <- paste0("https://lobid.org/gnd/", query, ".json")
+  } else {
+    # build URL according to lobid documentation
+    if (is.null(parameter)) {
+      url <- paste0("https://lobid.org/", lobid_api_type, "/search?q=", query, "&format=json")
+      url <- URLencode(url)
+    } else if (!is.null(parameter)) {
+      url <- paste0("https://lobid.org/", lobid_api_type, "/search?q=", parameter, ":", query, "&format=json")
+    }
   }
 
   if (verbose == TRUE) {

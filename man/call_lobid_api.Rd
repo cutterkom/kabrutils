@@ -21,7 +21,7 @@ call_lobid_api(
 
 \item{as_list}{default: \code{FALSE}. If \code{TRUE} then json is converted to a R list, otherwise just url}
 
-\item{lobid_api_type}{lobid offers 3 types of APIs: \code{resources}, \code{organisations} and \code{gnd}; defaults to \code{resources}}
+\item{lobid_api_type}{lobid offers 3 types of APIs: \code{resources}, \code{organisations} and \code{gnd} as well as a direct search for an entity via GND_ID \code{gnd_id_search}; defaults to \code{resources}}
 }
 \value{
 list
