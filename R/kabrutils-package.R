@@ -2,6 +2,8 @@
 "_PACKAGE"
 
 ## usethis namespace: start
+#' @importFrom cli cli_bullets
+#' @importFrom cli cli_h1
 #' @importFrom config get
 #' @importFrom curl curl
 #' @importFrom DBI dbConnect
@@ -25,9 +27,11 @@
 #' @importFrom purrr map_df
 #' @importFrom purrr map2_chr
 #' @importFrom quanteda.textstats textstat_simil
+#' @importFrom rlang sym
 #' @importFrom RMariaDB MariaDB
 #' @importFrom rvest html_nodes
 #' @importFrom rvest html_text
+#' @importFrom SPARQL SPARQL
 #' @importFrom stringi stri_trans_general
 #' @importFrom stringr str_c
 #' @importFrom stringr str_remove_all
