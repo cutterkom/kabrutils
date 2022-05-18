@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 pandoc: 2.14.0.3
 pkgdown: 2.0.2
 pkgdown_sha: ~
@@ -6,4 +7,11 @@ last_built: 2022-04-07T16:03Z
 urls:
   reference: https://cutterkom.github.io/kabrutils/reference
   article: https://cutterkom.github.io/kabrutils/articles
+=======
+pandoc: '2.18'
+pkgdown: 2.0.2
+pkgdown_sha: ~
+articles: {}
+last_built: 2022-05-18T07:52Z
+>>>>>>> Stashed changes
 
