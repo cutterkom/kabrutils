@@ -86,3 +86,19 @@ add_statement <- function(data = NULL,
 
   return(data)
 }
+
+
+#' Longform for import
+#'
+#' in form: item - property - value
+#' @param data dataset
+#' @param start_at column to start longform; input to ``tidyr::pivot_longer(col)``
+#' @export
+long_for_quickstatements <- function(data, start_at = 2) {
+  data %>%
+    tidyr::pivot_longer(cols = start_at:last_col(), names_to = "property", values_to = "value") %>%
+    # fix helper with two instances_of:
+    dplyr::mutate(property = stringr::str_remove(property, "_.*")) %>%
+    dplyr::filter(!is.na(value)) %>%
+    dplyr::distinct()
+}

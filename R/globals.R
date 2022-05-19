@@ -11,6 +11,7 @@ utils::globalVariables(
     "middlename",
     "name", # from tibble::enframe() in transform_json_to_dataframe()
     "statement",
-    "statements"
+    "statements",
+    "property"
     )
 )
