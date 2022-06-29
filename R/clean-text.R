@@ -110,3 +110,23 @@ create_fingerprint <- function(string, tokens = "word", n = NULL) {
 
   return(string)
 }
+
+#' Extract QID from string
+#' @param string string to extract from
+#' @param pattern default for QID
+#' @return string
+#' @export
+extract_id <- function(string, pattern = "Q[0-9]+") {
+  stringr::str_extract(string, pattern)
+}
+
+#' Remove lang desc
+#' When getting data from a SPARQL endpoint each string has a `@lang` element. This function removes it.
+#' @param string string to remove from
+#' @param pattern default for QID
+#' @return string
+#' @export
+remove_lang <- function(string, pattern) {
+  stringr::str_remove_all(string, '"|@.*')
+}
+
